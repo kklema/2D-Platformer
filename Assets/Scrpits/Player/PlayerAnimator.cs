@@ -4,18 +4,13 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PlayerMover))]
-//[RequireComponent(typeof(PlayerGroundCheck))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerAnimator : MonoBehaviour
 {
     private Animator _animator;
     private GroundCheck _groundCheck;
     private PlayerMover _playerMover;
     private Rigidbody2D _rb;
-
-    private bool _isGrounded => _groundCheck.IsGrounded;
-
-    private bool _isJumping;
-    private bool _isFalling;
 
     private void Start()
     {
@@ -28,7 +23,7 @@ public class PlayerAnimator : MonoBehaviour
     private void Update()
     {
         _animator.SetBool("IsWalking", _playerMover.IsWalking);
-        _animator.SetBool("IsGrounded", _isGrounded);
+        _animator.SetBool("IsGrounded", _groundCheck.IsGrounded);
         _animator.SetFloat("yVelocity", _rb.velocity.y);
     }
 }

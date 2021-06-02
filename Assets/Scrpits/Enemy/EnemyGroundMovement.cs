@@ -4,11 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(Transform))]
 public class EnemyGroundMovement : MonoBehaviour
 {
-    private Transform _facingSide;
-
     [SerializeField] private float _speed;
     [SerializeField] private float _castPosDistance;
 
+    private Transform _facingSide;
     private EnemyWallCheck _wallCheck;
     private Rigidbody2D _rb;
 
