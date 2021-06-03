@@ -28,7 +28,7 @@ public class PlayerInput : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             _mover.Jump();
         }

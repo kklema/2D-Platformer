@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour
 {
+    [SerializeField] private int _heal;
+
     private bool _activ;
 
     public bool Activ => _activ;
@@ -10,8 +12,14 @@ public class Gem : MonoBehaviour
     {
         if (collision.TryGetComponent<Player>(out Player player))
         {
+            DealHealing();
             gameObject.SetActive(false);
             _activ = false;
         }
+    }
+
+    public int DealHealing()
+    {
+        return _heal;
     }
 }
