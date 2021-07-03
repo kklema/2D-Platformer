@@ -9,14 +9,17 @@ public class PlayerMover : MonoBehaviour
     private bool _isWalking;
 
     private Rigidbody2D _rigidbody;
-    private GroundCheck _groundCheck;
+    private PlayerGroundCheck _groundCheck;
+
+    private bool _isJumping;
 
     public bool IsWalking => _isWalking;
+    public bool IsJumping => _isJumping;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _groundCheck = GetComponent<Player>().GetComponentInChildren<GroundCheck>();
+        _groundCheck = GetComponent<Player>().GetComponentInChildren<PlayerGroundCheck>();
     }
 
     private void FixedUpdate()
@@ -34,13 +37,13 @@ public class PlayerMover : MonoBehaviour
     private void DoHorizontalMovement(float speed)
     {
         _isWalking = true;
-        transform.Translate(new Vector2(_speed, 0) * Time.deltaTime);
+        _rigidbody.velocity = new Vector2(speed, _rigidbody.velocity.y);
         FlipSide(speed);
     }
 
     private void DoVerticalMovement()
     {
-        _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpForce);
     }
 
     private void FlipSide(float speed)
@@ -70,12 +73,17 @@ public class PlayerMover : MonoBehaviour
         if (_groundCheck.IsGrounded)
         {
             DoVerticalMovement();
+            _isJumping = true;
+        }
+        else
+        {
+            _isJumping = false;
         }
     }
 
     public void StopHorizontalMovement()
     {
         _isWalking = false;
-        transform.Translate(new Vector2(0, 0));
+        _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
     }
 }

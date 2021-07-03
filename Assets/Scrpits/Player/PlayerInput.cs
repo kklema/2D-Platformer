@@ -10,7 +10,7 @@ public class PlayerInput : MonoBehaviour
         _mover = GetComponent<PlayerMover>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.D))
         {
@@ -24,10 +24,7 @@ public class PlayerInput : MonoBehaviour
         {
             _mover.StopHorizontalMovement();
         }
-    }
 
-    private void FixedUpdate()
-    {
         if (Input.GetKey(KeyCode.W))
         {
             _mover.Jump();

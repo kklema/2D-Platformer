@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GroundCheck : MonoBehaviour
+public class PlayerGroundCheck : MonoBehaviour
 {
     private bool _isGrounded;
 
@@ -8,7 +8,7 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Ground>(out Ground ground))
+        if (collision.TryGetComponent<Ground>(out Ground ground) || collision.TryGetComponent<Wall>(out Wall wall))
         {
             _isGrounded = true;
             Debug.Log("На земле");
@@ -17,7 +17,7 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Ground>(out Ground ground))
+        if (collision.TryGetComponent<Ground>(out Ground ground) || collision.TryGetComponent<Wall>(out Wall wall))
         {
             _isGrounded = false;
             Debug.Log("В воздухе");
