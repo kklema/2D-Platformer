@@ -15,6 +15,14 @@ public class PlayerGroundCheck : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<Ground>(out Ground ground))
+        {
+            _isGrounded = true;
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Ground>(out Ground ground) || collision.TryGetComponent<Wall>(out Wall wall))
