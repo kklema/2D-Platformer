@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Transform))]
+
 public class EnemyGroundMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -9,11 +10,11 @@ public class EnemyGroundMovement : MonoBehaviour
 
     private Transform _facingSide;
     private EnemyWallCheck _wallCheck;
-    private Rigidbody2D _rb;
+    private Rigidbody2D _rigidbody;
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
         _facingSide = GetComponent<Transform>();
         _wallCheck = GetComponentInChildren<EnemyWallCheck>();
     }
@@ -26,6 +27,6 @@ public class EnemyGroundMovement : MonoBehaviour
             _facingSide.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y);
         }
 
-            _rb.velocity = new Vector2(_speed, _rb.velocity.y);
+            _rigidbody.velocity = new Vector2(_speed, _rigidbody.velocity.y);
     }
 }
