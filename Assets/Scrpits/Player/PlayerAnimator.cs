@@ -7,8 +7,9 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
+    [SerializeField] private PlayerGroundCheck _groundCheck;
+
     private Animator _animator;
-    private PlayerGroundCheck _groundCheck;
     private PlayerMover _playerMover;
     private Rigidbody2D _rigidbody;
     private Player _player;
@@ -22,7 +23,6 @@ public class PlayerAnimator : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _playerMover = GetComponent<PlayerMover>();
-        _groundCheck = GetComponent<Player>().GetComponentInChildren<PlayerGroundCheck>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _player = GetComponent<Player>();
     }

@@ -5,12 +5,11 @@ public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
-
-    private bool _isWalking;
+    [SerializeField] private PlayerGroundCheck _groundCheck;
 
     private Rigidbody2D _rigidbody;
-    private PlayerGroundCheck _groundCheck;
 
+    private bool _isWalking;
     private bool _isJumping;
 
     public bool IsWalking => _isWalking;
@@ -19,7 +18,6 @@ public class PlayerMover : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _groundCheck = GetComponent<Player>().GetComponentInChildren<PlayerGroundCheck>();
     }
 
     private void FixedUpdate()

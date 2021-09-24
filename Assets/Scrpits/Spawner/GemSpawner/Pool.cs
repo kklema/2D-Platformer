@@ -6,7 +6,7 @@ using System.Linq;
 public class Pool : MonoBehaviour
 {
     [SerializeField] private GameObject _container;
-    [SerializeField] int _capacity;
+    [SerializeField] private int _capacity;
 
     private List<GameObject> _pool = new List<GameObject>();
 

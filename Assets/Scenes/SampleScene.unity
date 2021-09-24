@@ -2367,6 +2367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 7
   _jumpForce: 7
+  _groundCheck: {fileID: 1274119012}
 --- !u!114 &1129036908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2439,6 +2440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128ffdbe4b682a04f89166347103f0e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundCheck: {fileID: 1274119012}
 --- !u!1 &1218911183
 GameObject:
   m_ObjectHideFlags: 0
